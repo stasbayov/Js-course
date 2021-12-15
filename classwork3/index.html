@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwokr 3</title>
+    <style>
+        .ok{
+            color: green;
+        }
+        .not-ok{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <br>
+    <input type="button" value="Test">
+    <p id="output"></p>
+    <script>
+        var inputValue = document.querySelector('[type="text"]');
+        var textBtn = document.querySelector('[type="button"]');
+        var output = document.querySelector('#output');
+        var regExp = /\d/;
+
+        textBtn.onclick = stringTest;
+
+        function stringTest() {
+            setTimeout(stringValidation, 2000)
+        }
+
+        function stringValidation() {
+            output.className = '';
+            if(inputValue.value.length === 0){
+                console.log(inputValue.length);
+                output.innerHTML = 'String is empty';
+                output.classList.add('not-ok');
+            } else if(inputValue.value.search(regExp) < -1){
+                output.innerHTML = inputValue.value;
+                output.classList.add('ok');
+            } else{
+                output.innerHTML = 'There are some digits in the sring';
+                output.classList.add('not-ok');
+            }
+        }
+    </script>
+</body>
+</html>

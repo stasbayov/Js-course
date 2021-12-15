@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homework 3</title>
+</head>
+<body>
+<!--
+    Запросите у пользователя ввести какую-то фразу.
+    Отобразите каждое отдельное слово в виде списка ul li.
+    Также отобразите первое слово UPPERCASE, а последние 2 с маленькой.
+    Найдите все буквы "а" их количество в модальное окно.
+ -->
+
+
+    <script>
+        var userText = prompt('Скажите что-то');
+        var body = document.querySelector('body');
+        var space = ' ';
+        var textSplited = userText.split(space);
+        if(userText.includes('а') || userText.includes('А')){
+            var aAmount = userText.match(/а/gi).length;
+            alert("Количество букв 'а' в строке = " + aAmount)
+        }
+        else {
+            alert("Буква 'а' в строке не найдена")
+        }
+        for (var i = 0; i < textSplited.length; i++){
+            var ul = document.createElement('ul');
+            var li = document.createElement('li');
+            li.innerText = textSplited[i];
+            ul.append(li);
+            body.append(ul);
+            if(i === 0){
+                li.innerText = textSplited[i].toUpperCase();
+            }
+            if(i === textSplited.length - 1){
+                li.innerText = textSplited[i].toLowerCase();
+            }
+            if(i === textSplited.length - 2){
+                li.innerText = textSplited[i].toLowerCase();
+            }
+        }
+    </script>
+</body>
+</html>

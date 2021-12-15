@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home work 3</title>
+</head>
+<body>
+    <!-- Создайте счетчик секунд, который начинает отчет с 1 и заканчивается на 30,
+    также добавьте кнопки которые останавливают отчет, и запускают его заново и добавьте кнопку
+    обнуляющую отcчет. Также попробуйте изменить код так чтобы отсчет начинался с 30 и заканчивался на 1. -->
+    <div id="timer"></div>
+    <button type="button" id="stop">stop</button>
+    <button type="button" id="start">start</button>
+    <button type="button" id="reset">reset</button>
+<script>
+    var timer = document.getElementById('timer')
+    var stop = document.getElementById('stop');
+    var start = document.getElementById('start');
+    var reset = document.getElementById('reset');
+    var timeCount;
+    var i = 1;
+    var isStartClicked = false;
+    function counter() {
+        if(i < 31){
+            timer.innerText = i;
+            i++;
+        }
+        timeCount = setTimeout(counter, 1000);
+    }
+    counter();
+
+    function stopCounter(){
+        clearInterval(timeCount)
+        isStartClicked = false;
+    }
+    stop.onclick = stopCounter;
+    start.addEventListener('click', function () {
+        if(isStartClicked === false){
+            counter();
+        }
+        isStartClicked = true;
+    });
+
+    function resetCounter() {
+        i = 0;
+        timer.innerText = i;
+        clearInterval(timeCount);
+        isStartClicked = false;
+    }
+
+    reset.onclick = resetCounter;
+
+
+    //reverse variant
+    // var i = 30;
+    // function counter() {
+    //     if(i > -1){
+    //         timer.innerText = i;
+    //         i--;
+    //     }
+    //     timeCount = setTimeout(counter, 200);
+    // }
+    // counter();
+    //
+    // function stopCounter(){
+    //     clearInterval(timeCount)
+    //     isStartClicked = false;
+    // }
+    // stop.onclick = stopCounter;
+    // start.addEventListener('click', function () {
+    //     i = 30;
+    //     if(isStartClicked === false){
+    //         counter();
+    //     }
+    //     isStartClicked = true;
+    // });
+    //
+    // function resetCounter() {
+    //     i = 30;
+    //     timer.innerText = i;
+    //     clearInterval(timeCount);
+    //     isStartClicked = false;
+    // }
+    //
+    // reset.onclick = resetCounter;
+
+
+</script>
+</body>
+</html>
