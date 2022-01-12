@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+    <!--
+    1. Создайте 5 блоков с текстом. Добавьте в каждый из блоков кнопку для его удаления.
+    Используйте только один обработчик.
+
+    2. Доработайте пример 004_Attr_Tech.html таким образом, чтобы при наведении на span элементы,
+    подсказка сплыва под ними, а не в модальном окне. Используйте addEventListener -->
+    <div id="main-div">
+        <span data-tooltip="наведите">наведите</span>
+        <span data-tooltip="для">для</span>
+        <span data-tooltip="подсказки">подсказки</span>
+    </div>
+    <script type="text/javascript">
+        //task1
+        // window.onload = function () {
+        //     var body = document.getElementsByTagName('body')[0];
+        //     for (var i = 0; i < 5; i++){
+        //         var block = document.createElement('div');
+        //         var button = document.createElement('button');
+        //         button.innerText = 'delete text';
+        //         block.innerText = 'block' + i;
+        //         block.appendChild(button);
+        //         body.appendChild(block);
+        //         button.addEventListener('click', function () {
+        //             this.closest('div').remove();
+        //         })
+        //     }
+        // }
+
+        //task2
+        window.onload = function () {
+            var mainDiv = document.getElementById("main-div");
+            var clue = document.createElement('i');
+            mainDiv.addEventListener('mouseover', function(e) {
+                var target = e && e.target || window.event.srcElement;
+                var dataToggleId = target.getAttribute('data-tooltip');
+                target.style.position = 'relative';
+                clue.style.position = 'absolute';
+                if (!dataToggleId) {
+                    console.log('test')
+                    clue.remove();
+                    return
+                }
+                clue.innerText = dataToggleId;
+                clue.style.top = '110%';
+                clue.style.left = '0';
+                target.appendChild(clue);
+            })
+        };
+    </script>
+</body>
+</html>
