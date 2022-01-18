@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+	<title>HomeWork</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+
+        .drag-drop{
+            position: relative;
+        }
+
+        #drag-drop{
+            width: 50px;
+            height: 50px;
+            background: green;
+            cursor: pointer;
+            position: absolute;
+        }
+
+        #move-div{
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+	1. drag and drop;
+	2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
+	при попадании div к краю окна, он переходит к началу окна.
+	-->
+
+    <section class="drag-drop">
+        <div id="drag-drop"></div>
+    </section>
+
+<!--    <section class="move-div">-->
+<!--        <div id="move-div"></div>-->
+<!--        <button id="stop">stop</button>-->
+<!--    </section>-->
+
+    <script type="text/javascript">
+        //drag and drop
+
+        window.addEventListener('load', function () {
+            var dragDrop = document.getElementById('drag-drop');
+            var eventPositionLeft;
+            var eventPositionTop;
+            var flag = 0;
+
+            function mouseMove (e) {
+                eventPositionTop = e.clientY;
+                eventPositionLeft = e.clientX;
+
+                dragDrop.style.top = eventPositionTop - dragDrop.getBoundingClientRect().height / 2 + 'px';
+                dragDrop.style.left = eventPositionLeft - dragDrop.getBoundingClientRect().width / 2 + 'px';
+            }
+
+            window.addEventListener('mousedown', function mouseDown(e) {
+                if (e.target === dragDrop) {
+                    window.addEventListener('mousemove', mouseMove, false)
+                    flag = 1;
+                }
+            })
+
+            function mouseUp() {
+                if(flag === 1) {
+                    window.removeEventListener('mousemove', mouseMove, false)
+                    flag = 0;
+                }
+            }
+
+            window.addEventListener('mouseup', mouseUp, false)
+        })
+
+
+
+        // window.addEventListener('load', function () {
+        //   var moveDiv = document.getElementById('move-div');
+        //   var stop = document.getElementById('stop');
+        //   var counter;
+        //   var count = 0;
+        //
+        //   moveDiv.addEventListener('click', moveFunc, false);
+        //
+        //   function moveFunc() {
+        //     counter = setInterval(function () {
+        //         if(count < (screen.width - moveDiv.getBoundingClientRect().width)){
+        //             count++;
+        //             moveDiv.style.left = count + 'px';
+        //             console.log(count)
+        //         } else{
+        //             count = 0;
+        //         }
+        //     }, 10)
+        //   }
+        //
+        //   stop.addEventListener('click', function () {
+        //     clearInterval(counter);
+        //   })
+        // })
+    </script>
+</body>
+</html>
