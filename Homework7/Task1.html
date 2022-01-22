@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- Создайте функцию, которая возвращает день недели для даты.
+День нужно возвратить в формате - понедельник имеет номер 1, вторник номер 2, …, воскресенье - номер 7. -->
+
+<script type="text/javascript">
+    window.addEventListener('load', function (){
+        var question = prompt('Назовите дату в формате DD/MM/YYYY');
+        var questionString = question.split("/");
+        var dateObj = new Date();
+        dateObj.setDate(questionString[0])
+        dateObj.setMonth(questionString[1] - 1)
+        dateObj.setFullYear(questionString[2]);
+        var dateStr = dateObj.toString();
+        var date = dateStr.split(' ')[0]
+        alert('Today is ' + date);
+    })
+</script>
+</body>
+</html>

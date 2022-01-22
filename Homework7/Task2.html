@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<script type="text/javascript">
+    window.addEventListener('load', function (){
+
+        class Man {
+            walk () {
+                document.write("I`m a man and I can walk" + "<br/>");
+            }
+            eat () {
+                document.write("I`m a man and I can eat" + "<br/>");
+            }
+            drink () {
+                document.write("I`m a man and I can drink" + "<br/>");
+            }
+        }
+
+        class Soldier extends Man {
+            shoot () {
+                document.write("I`m a soldier and I can shoot" + "<br/>");
+            }
+        }
+
+        let man = new Man();
+        let soldier = new Soldier();
+
+        man.walk()
+        man.eat()
+        man.drink()
+
+        soldier.walk()
+        soldier.eat()
+        soldier.drink()
+        soldier.shoot()
+
+
+        document.write("<br/>" + "<br/>")
+
+        function Doctor() {
+            this.walk = function () {
+                document.write("I`m a doctor and I can walk" + "<br/>");
+            };
+            this.eat = function () {
+                document.write("I`m a doctor and I can eat" + "<br/>");
+            };
+            this.drink = function () {
+                document.write("I`m a doctor and I can drink" + "<br/>");
+            };
+        }
+
+        function Dentist() {
+            this.cure = function () {
+                document.write("I`m a dentist and I can treat teeth" + "<br/>");
+            };
+        }
+
+        function Surgeon() {
+            this.cure = function () {
+                document.write("I`m a surgeon and I can perform operations" + "<br/>");
+            };
+        }
+
+        Dentist.prototype = new Doctor();
+        Surgeon.prototype = new Doctor();
+
+        var dentist = new Dentist();
+        var surgeon = new Surgeon();
+
+        dentist.walk()
+        dentist.eat()
+        dentist.drink()
+        dentist.cure()
+
+        surgeon.walk()
+        surgeon.eat()
+        surgeon.drink()
+        surgeon.cure()
+    })
+</script>
+</body>
+</html>
